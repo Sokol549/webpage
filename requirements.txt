@@ -6,6 +6,7 @@ click==8.0.1
 colorama==0.4.4
 Flask==2.0.1
 Flask-SQLAlchemy==2.5.1
+Flask_WTF
 greenlet==1.1.1
 idna==3.2
 itsdangerous==2.0.1
