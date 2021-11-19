@@ -39,7 +39,7 @@ def register():
         return redirect(url_for('news.index'))
     form = RegistrationForm()
     title = "Регистрация"
-    return render_template('user/registration.html', page_title=title, form = form)
+    return render_template('user/registration.html', page_title=title, form=form)
 
 @blueprint.route('/process-register', methods=['POST'])
 def process_register():
