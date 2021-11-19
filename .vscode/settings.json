@@ -1,0 +1,15 @@
+{
+    "python.testing.pytestArgs": [
+        "webapp"
+    ],
+    "python.testing.unittestEnabled": true,
+    "python.testing.pytestEnabled": false,
+    "python.testing.unittestArgs": [
+        "-v",
+        "-s",
+        "./webapp",
+        "-p",
+        "*test.py"
+    ],
+    "python.pythonPath": "uenv/bin/python"
+}
