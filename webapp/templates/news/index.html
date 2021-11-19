@@ -3,10 +3,11 @@
 {% block content %}
     <div class= "row">
         <div class="col-8">
+            {% include('messages.html') %}
             <h2>Новости</h2>
             {% for news in news_list %}
-            <h3><a href="{{ news.url }}">{{ news.title }}</a></h3>
-            <p>{{ news.published.strftime('%Y-%m-%d') }}</p>
+            <h3><a href="{{ url_for('news.single_news', news_id=news.id) }}">{{ news.title }}</a></h3>
+            <p>{{ news.published.strftime('%Y-%m-%d') }} | Комментарии: { news.comments.count() } </p>
             <hr />
             {%endfor%}
         </div>
