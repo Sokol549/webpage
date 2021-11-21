@@ -1,5 +1,5 @@
 from datetime import datetime
-from sqlalchemy.orm import relationships
+from sqlalchemy.orm import relationship
 
 from webapp.model import db
 
@@ -32,7 +32,7 @@ class Comment(db.Model):
         db.ForeignKey('user.id', ondelete="CASCADE"),
         index=True
     )
-    news = relationships('News', backref='comments')
-    user = relationships('User', backref='comments')
+    news = relationship('News', backref='comments')
+    user = relationship('User', backref='comments')
     def __repr__(self):
         return '<Comment {}>'.format(self.id)

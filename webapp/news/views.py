@@ -30,7 +30,7 @@ def add_comment():
     form = CommentForm()
     if form.validate_on_submit():
         comment = Comment(text=form.comment_text.data, news_id=form.news_id.data, user_id=current_user.id)
-        db.sessio.add(comment)
+        db.session.add(comment)
         db.session.commit()
         flash('Комментарий успешно добавлен')
     else:
@@ -40,4 +40,9 @@ def add_comment():
                     getattr(form, field).label.text,
                     error
                 ))
-    return redirect(get_redirect_target())    
+    return redirect(get_redirect_target())
+
+@blueprint.route('/adding')
+@login_required
+def add_news():
+    return render_template('news/adding.html', page_title=title, form=form)  
