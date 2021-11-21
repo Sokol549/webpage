@@ -9,11 +9,39 @@
             <div class="card">
                 <div class="card-body">
                   <h3 class="card-title"><a href="{{ url_for('news.single_news', news_id=news.id) }}">{{ news.title }}</a></h3>
-                  <p class="card-text">{{ news.text|safe }}</p>
-                  <a href="#" class="card-link">Card link</a>
-                  <a href="#" class="card-link">Another link</a>
                 </div>
               </div>
+              <br>
+              <div>
+                <a class="btn btn-primary" data-toggle="collapse" href="#NewsText" role="button" aria-expanded="false" aria-controls="NewsText">
+                  Full news
+                </a>
+              <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#Comments" aria-expanded="false" aria-controls="Comments">
+                Open news comments
+              </button>
+              <div class="collapse" id="NewsText">
+                <div class="card card-body">
+                  <p class="card-text">{{ news.text|safe }}</p>
+                </div>
+              </div>
+              <div class="collapse" id="Comments">
+              {% if news.comments %}
+                <h3>Комментарии:</h3>
+                {% for comment in news.comments %}
+                <div class="card">
+                    <div class="card-body">
+                        <p class="card-text">{{ comment.text }}</p>
+                        <p class="card-text">
+                            <small>Опубликовано: {{ comment.created.strftime('%d.%m.%Y') }} | 
+                                Автор: {{ comment.user.username }}</small>
+                        </p>
+                    </div>
+                </div>
+                {% endfor %}
+              {% endif %}
+              </div>
+              </div>
+              
             <p>{{ news.published.strftime('%Y-%m-%d') }} | Комментарии: {{ news.comments_count() }} </p>
             <hr />
             {%endfor%}
