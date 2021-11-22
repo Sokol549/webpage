@@ -16,6 +16,15 @@ class News(db.Model):
     def __repr__(self):
         return '<News {}{}>'.format(self.title, self.url)
 
+class Ranobe(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String, nullable=False)
+    url_main = db.Column(db.String, unique=True, nullable=False)
+    url_chapter = db.Column(db.String, unique=True, nullable=False)
+    text = db.Column(db.String, nullable=True)
+
+    def __repr__(self):
+        return '<Ranobe {}{}{}>'.format(self.title, self.url_main, self.url_chapter)
 
 class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
